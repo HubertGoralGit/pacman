@@ -1,10 +1,19 @@
 import React from "react";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  height: 50px;
+  background-color: #000;
+  color: #fff;
+  padding-left: 10px;
+  padding-right: 10px;
+`;
 
 function Header({ score }) {
   return (
-    <div>
+    <Wrapper>
       <span>SCORE: {score}</span>
-    </div>
+    </Wrapper>
   );
 }
 
