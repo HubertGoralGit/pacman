@@ -6,7 +6,7 @@ const GhostWrapper = styled.div`
   position: absolute;
   height: 50px;
   width: 50px;
-  transition: 1s linear;
+  transition: 0.5s linear;
 
   .ghost-red {
     fill: red;
@@ -35,8 +35,8 @@ class Ghost extends Component {
   };
 
   componentDidMount() {
-    this.changeDirectionInterval = setInterval(this.changeDirection, 1000);
-    this.moveInterval = setInterval(this.move, 1000);
+    this.changeDirectionInterval = setInterval(this.changeDirection, 500);
+    this.moveInterval = setInterval(this.move, 500);
   }
 
   componentWillUnmount() {

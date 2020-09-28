@@ -8,7 +8,7 @@ const PacmanWrapper = styled.div`
   background: yellow;
   border-radius: 50%;
   outline: none;
-  transition: 0.4s linear;
+  transition: 0.2s linear;
 
   &.pacman-left {
     transform: rotateY(180deg);
@@ -134,14 +134,14 @@ class Pacman extends Component {
   };
 
   render() {
-    const { direction } = this.state;
+    const { position, direction } = this.state;
     return (
       <PacmanWrapper
         className={`pacman-${direction}`}
         ref={this.pacmanRef}
         tabIndex="0"
         onKeyDown={this.handleKeyDown}
-        style={this.state.position}
+        style={position}
       >
         <PacmanEye />
         <PacmanMouth />
