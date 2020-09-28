@@ -16,7 +16,10 @@ class Board extends Component {
     return (
       <Wrapper>
         <Pacman />
-        <Ghost />
+        <Ghost color="red" />
+        {/* <Ghost color="pink" />
+        <Ghost color="green" />
+        <Ghost color="blue" /> */}
       </Wrapper>
     );
   }
