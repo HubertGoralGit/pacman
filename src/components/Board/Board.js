@@ -4,7 +4,7 @@ import Pacman from "../Pacman/Pacman";
 
 const Wrapper = styled.div`
   position: relative;
-  background-color: #34495e;
+  background-color: black;
   border: 20px solid #c0392b;
   height: calc(100vh - 90px);
   width: calc(100% - 40px);
