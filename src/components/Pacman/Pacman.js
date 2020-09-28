@@ -53,7 +53,7 @@ const eatingAnimation = keyframes`
 
 const PacmanMouth = styled.div`
   position: absolute;
-  background: black;
+  background: #34495e;
   width: 100%;
   height: 100%;
   clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
