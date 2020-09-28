@@ -7,6 +7,20 @@ const PacmanWrapper = styled.div`
   width: 50px;
   background: yellow;
   border-radius: 50%;
+  outline: none;
+  transition: 0.2s linear;
+
+  &.pacman-left {
+    transform: rotateY(180deg);
+  }
+
+  &.pacman-up {
+    transform: rotate(-90deg);
+  }
+
+  &.pacman-down {
+    transform: rotate(90deg);
+  }
 `;
 
 const PacmanEye = styled.div`
@@ -57,9 +71,80 @@ class Pacman extends Component {
     },
   };
 
+  constructor(props) {
+    super(props);
+    this.pacmanRef = React.createRef();
+  }
+
+  componentDidMount() {
+    this.pacmanRef.current.focus();
+  }
+
+  handleKeyDown = (e) => {
+    /// down
+    if (e.keyCode === 40) {
+      this.setState((prevState) => {
+        return {
+          direction: "down",
+          position: {
+            ...prevState.position,
+            top: prevState.position.top + 20,
+            left: prevState.position.left,
+          },
+        };
+      });
+    }
+    /// right
+    else if (e.keyCode === 39) {
+      this.setState((prevState) => {
+        return {
+          direction: "right",
+          position: {
+            ...prevState.position,
+            top: prevState.position.top,
+            left: prevState.position.left + 20,
+          },
+        };
+      });
+    }
+    /// left
+    else if (e.keyCode === 37) {
+      this.setState((prevState) => {
+        return {
+          direction: "left",
+          position: {
+            ...prevState.position,
+            top: prevState.position.top,
+            left: prevState.position.left - 20,
+          },
+        };
+      });
+    }
+    /// top
+    else if (e.keyCode === 38) {
+      this.setState((prevState) => {
+        return {
+          direction: "up",
+          position: {
+            ...prevState.position,
+            top: prevState.position.top - 20,
+            left: prevState.position.left,
+          },
+        };
+      });
+    }
+  };
+
   render() {
+    const { direction, position } = this.state;
     return (
-      <PacmanWrapper style={this.state.position}>
+      <PacmanWrapper
+        className={`pacman-${direction}`}
+        ref={this.pacmanRef}
+        tabIndex="0"
+        onKeyDown={this.handleKeyDown}
+        style={this.state.position}
+      >
         <PacmanEye />
         <PacmanMouth />
       </PacmanWrapper>
