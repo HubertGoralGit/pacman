@@ -66,8 +66,8 @@ class Pacman extends Component {
   state = {
     direction: "right",
     position: {
-      top: 20,
-      left: 20,
+      top: 0,
+      left: 0,
     },
   };
 
@@ -81,56 +81,54 @@ class Pacman extends Component {
   }
 
   handleKeyDown = (e) => {
+    const currentTop = this.state.position.top;
+    const currentLeft = this.state.position.left;
+    const { step, size, border, topScoreBoardHeight } = this.props;
+
     /// down
     if (e.keyCode === 40) {
-      this.setState((prevState) => {
-        return {
-          direction: "down",
-          position: {
-            ...prevState.position,
-            top: prevState.position.top + 20,
-            left: prevState.position.left,
-          },
-        };
+      this.setState({
+        direction: "down",
+        position: {
+          top: Math.min(
+            currentTop + step,
+            window.innerHeight - border * 2 - size - topScoreBoardHeight
+          ),
+          left: currentLeft,
+        },
       });
     }
     /// right
     else if (e.keyCode === 39) {
-      this.setState((prevState) => {
-        return {
-          direction: "right",
-          position: {
-            ...prevState.position,
-            top: prevState.position.top,
-            left: prevState.position.left + 20,
-          },
-        };
+      this.setState({
+        direction: "right",
+        position: {
+          top: currentTop,
+          left: Math.min(
+            currentLeft + step,
+            window.innerWidth - border * 2 - size
+          ),
+        },
       });
     }
     /// left
     else if (e.keyCode === 37) {
-      this.setState((prevState) => {
-        return {
-          direction: "left",
-          position: {
-            ...prevState.position,
-            top: prevState.position.top,
-            left: prevState.position.left - 20,
-          },
-        };
+      this.setState({
+        direction: "left",
+        position: {
+          top: currentTop,
+          left: Math.max(currentLeft - step, 0),
+        },
       });
     }
     /// top
     else if (e.keyCode === 38) {
-      this.setState((prevState) => {
-        return {
-          direction: "up",
-          position: {
-            ...prevState.position,
-            top: prevState.position.top - 20,
-            left: prevState.position.left,
-          },
-        };
+      this.setState({
+        direction: "up",
+        position: {
+          top: Math.max(currentTop - step, 0),
+          left: currentLeft,
+        },
       });
     }
   };
@@ -153,7 +151,7 @@ class Pacman extends Component {
 }
 
 Pacman.defaultProps = {
-  step: 20,
+  step: 50,
   size: 50,
   border: 10 * 2,
   topScoreBoardHeight: 50,
