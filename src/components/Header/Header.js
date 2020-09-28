@@ -7,6 +7,9 @@ const Wrapper = styled.div`
   color: #fff;
   padding-left: 10px;
   padding-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 function Header({ score }) {
