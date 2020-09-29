@@ -8,7 +8,7 @@ const PacmanWrapper = styled.div`
   background: yellow;
   border-radius: 50%;
   outline: none;
-  transition: 0.2s linear;
+  /* transition: 0.2s linear; */
 
   &.pacman-left {
     transform: rotateY(180deg);

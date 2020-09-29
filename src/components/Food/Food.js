@@ -18,7 +18,7 @@ const FoodElement = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: violet;
+  background: yellow;
 `;
 
 class Food extends Component {
@@ -29,6 +29,10 @@ class Food extends Component {
     },
     hidden: false,
   };
+
+  ate() {
+    this.setState({ hidden: !this.hidden });
+  }
 
   render() {
     const { position, hidden } = this.state;
