@@ -1,3 +1,5 @@
+Link to Live: https://5f730e04a7effe6f481ae5f3--pacman-hubert-goral.netlify.app/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
